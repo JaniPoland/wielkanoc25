@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wpisz hasło</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f1ee;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin-top: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      background-color: #b8860b;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      display: none;
+    }
+    .button:hover {
+      background-color: #daa520;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Podaj hasło, aby przejść dalej</h1>
+    <input type="text" id="password" placeholder="Wpisz hasło tutaj" />
+    <div class="error">Niepoprawne hasło, spróbuj ponownie.</div>
+    <a class="button" href="tor.html">Przejdź dalej</a> // link do strony po odblokowaniu!!!
+  </div>
+
+  <script>
+    const correctPassword = "pisanka"; // ← tutaj wpisz swoje hasło!
+    const input = document.getElementById('password');
+    const button = document.querySelector('.button');
+    const errorMessage = document.querySelector('.error');
+
+    input.addEventListener('input', () => {
+      if (input.value.trim().toLowerCase() === correctPassword.toLowerCase()) {
+        button.style.display = 'inline-block';
+        errorMessage.style.display = 'none';
+      } else {
+        button.style.display = 'none';
+        if (input.value.length > 0) {
+          errorMessage.style.display = 'block';
+        } else {
+          errorMessage.style.display = 'none';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
